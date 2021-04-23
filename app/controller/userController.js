@@ -1,9 +1,6 @@
 const { baseResponse } = require("./../common/helper/baseResponse");
 const { user } = require("./../db/models");
-const bycript = require("bcryptjs");
-const { generateJWT } = require("./../common/middleware/auth");
 const { hashing } = require("./../common/helper/hashPassword");
-const { Op } = require("sequelize");
 
 class UserController {
   static async findAllUser(req, res, next) {
@@ -96,7 +93,7 @@ class UserController {
         },
         returning: true,
       });
-      return baseResponse({ success: true, message: "success",data: data[1]})(
+      return baseResponse({ success: true, message: "success", data: data[1] })(
         res,
         200
       );
